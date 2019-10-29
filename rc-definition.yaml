@@ -8,10 +8,11 @@ metadata:
 spec:
   template:
     metadata:
-      name: wordpress-pod
-      type: web-server
+      labels:      
+        app: wordpress-pod
+        type: web-server
     spec:
       containers:
         - name: wordpress
           image: wordpress
-replicas: 3          
+  replicas: 3          
