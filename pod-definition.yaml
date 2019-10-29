@@ -6,5 +6,8 @@ metadata:
      name: nginx-pod
      type: web-server
 spec:
-  - name: nginx
-    image: nginx
+  containers:
+    - name: nginx
+      image: nginx
+    - name: redis
+      image: redis
