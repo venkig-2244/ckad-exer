@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: my-configmap
+data:
+  DEBUG_LOG_LEVEL: 1
+  BACKGROUND_PROCESS: True
+  ENVRONMENT: staging

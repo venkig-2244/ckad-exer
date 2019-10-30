@@ -11,3 +11,6 @@ spec:
       image: nginx
     - name: redis
       image: redis
+      envFrom:
+        - configMapRef:
+             name: my-configmap
