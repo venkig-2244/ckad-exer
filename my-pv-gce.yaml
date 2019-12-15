@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+    name: pv-vol-gce
+spec:
+    accessModes:
+        - ReadWriteMany
+    capacity:
+        storage: 100Gi
+    name: test-volume
+
+    # This GCE PD must already exist.
+    gcePersistentDisk:
+      pdName: my-data-disk
+      fsType: ext4
