@@ -8,3 +8,12 @@ spec:
       name: alpine
       command: ["/bin/sh", "-c"]
       args: ["shuf -i 0-100 -n 1 /opt/numberout.out;"]
+      volumeMounts:
+      - mountPath: /work
+        name: data-volume
+
+    volumes:
+    - name: data-volume
+      hostpath:
+        path: /work
+        type: Directory
