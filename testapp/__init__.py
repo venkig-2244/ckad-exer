@@ -1,3 +1,8 @@
-from flask import Flask
-app = Flask(__name__)
-from app import views
+from flash_restful import Api
+from app import flaskAppInstance
+from .ProjectAPI import ProjectAPI
+
+restServerInstance = Api(flashAppInstance)
+
+restServerInstance.add_resource(ProjectAPI,"/")
+
