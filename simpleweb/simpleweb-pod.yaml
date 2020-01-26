@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
     name: simpleweb
+    namespace: simpleweb
     labels:
         app: simpleweb
 spec:
@@ -11,3 +12,8 @@ spec:
           ports:
             - containerPort: 8080
               name: simpleweb
+          envFrom:
+            - configMapRef:
+                name: simpleweb-config
+            - configMapRef:
+                name: simpleweb-config2
