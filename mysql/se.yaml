@@ -1,0 +1,13 @@
+apiVersion: v1
+data:
+  pass: cGFzc3dvcmQ=
+  user: YWRtaW4=
+kind: Secret
+metadata:
+  creationTimestamp: "2020-04-08T14:23:49Z"
+  name: db-user-pass-759t4d9k6f
+  namespace: default
+  resourceVersion: "11896060"
+  selfLink: /api/v1/namespaces/default/secrets/db-user-pass-759t4d9k6f
+  uid: 904407b8-79a4-11ea-9bd3-42010aa00013
+type: Opaque

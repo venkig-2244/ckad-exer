@@ -1,0 +1,13 @@
+apiVersion: v1
+data:
+  password: cGFzc3dvcmQ=
+  username: YWRtaW4=
+kind: Secret
+metadata:
+  creationTimestamp: "2020-04-08T14:15:04Z"
+  name: mysecret
+  namespace: default
+  resourceVersion: "11894228"
+  selfLink: /api/v1/namespaces/default/secrets/mysecret
+  uid: 57df2c29-79a3-11ea-9bd3-42010aa00013
+type: Opaque

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: time-check
+  name: time-check
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: time-check
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: time-check
+    spec:
+      containers:
+      - image: busybox
+        name: time-check
+        resources: {}
+        command: ["/bin/sh"]
+        args: ["-c", "while true; do date >> /data/out.log; sleep $(wait_time);echo waiting for $(wait_time) seconds; done;"]
+        volumeMounts:
+        - name: data
+          mountPath: /data
+        env:
+        - name: wait_time
+          valueFrom:
+            configMapKeyRef:
+              name: time-config
+              key: TIME_FREQ
+      volumes:
+      - name: data
+        hostPath:
+          path: /var/local/aaa
+          type: DirectoryOrCreate
+status: {}

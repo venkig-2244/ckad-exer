@@ -1,0 +1,107 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubernetes.io/limit-ranger: 'LimitRanger plugin set: cpu request for container
+      pi'
+  creationTimestamp: "2020-04-12T01:37:04Z"
+  generateName: pi-
+  labels:
+    controller-uid: 1cf6db76-7c5e-11ea-9bd3-42010aa00013
+    job-name: pi
+  name: pi-mpx2z
+  namespace: default
+  ownerReferences:
+  - apiVersion: batch/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Job
+    name: pi
+    uid: 1cf6db76-7c5e-11ea-9bd3-42010aa00013
+  resourceVersion: "12941541"
+  selfLink: /api/v1/namespaces/default/pods/pi-mpx2z
+  uid: 1cf92cdb-7c5e-11ea-9bd3-42010aa00013
+spec:
+  containers:
+  - command:
+    - perl
+    - -Mbignum=bpi
+    - -wle
+    - print bpi(2000)
+    image: perl
+    imagePullPolicy: Always
+    name: pi
+    resources:
+      requests:
+        cpu: 100m
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-wtqnl
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: gke-ckad-cluster-default-pool-bcfb47cb-cdj0
+  priority: 0
+  restartPolicy: Never
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: default-token-wtqnl
+    secret:
+      defaultMode: 420
+      secretName: default-token-wtqnl
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2020-04-12T01:37:04Z"
+    reason: PodCompleted
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2020-04-12T01:37:43Z"
+    reason: PodCompleted
+    status: "False"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2020-04-12T01:37:43Z"
+    reason: PodCompleted
+    status: "False"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2020-04-12T01:37:04Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://33fd0f3527b92ff306c310fda61411e69503c81af4a0c4fcb37cd2643dad585c
+    image: perl:latest
+    imageID: docker-pullable://perl@sha256:f62b1aed227c3ebd8b6789cdda20681268494b92dd9fff8f43a27a10e0522e52
+    lastState: {}
+    name: pi
+    ready: false
+    restartCount: 0
+    state:
+      terminated:
+        containerID: docker://33fd0f3527b92ff306c310fda61411e69503c81af4a0c4fcb37cd2643dad585c
+        exitCode: 0
+        finishedAt: "2020-04-12T01:37:42Z"
+        reason: Completed
+        startedAt: "2020-04-12T01:37:36Z"
+  hostIP: 10.160.0.9
+  phase: Succeeded
+  podIP: 10.44.1.79
+  qosClass: Burstable
+  startTime: "2020-04-12T01:37:04Z"

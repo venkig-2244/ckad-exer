@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2020-04-25T06:32:38Z"
+  labels:
+    app: db
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:app: {}
+      f:spec:
+        f:ports:
+          .: {}
+          k:{"port":3306,"protocol":"TCP"}:
+            .: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+        f:selector:
+          .: {}
+          f:app: {}
+        f:sessionAffinity: {}
+        f:type: {}
+    manager: kubectl
+    operation: Update
+    time: "2020-04-25T06:32:38Z"
+  name: mysql
+  namespace: default
+  resourceVersion: "463953"
+  selfLink: /api/v1/namespaces/default/services/mysql
+  uid: 8b8ec0d1-43ef-473b-9ce8-a093eaeb0ea9
+spec:
+  clusterIP: 10.97.94.182
+  ports:
+  - port: 3306
+    protocol: TCP
+    targetPort: 3306
+  selector:
+    app: db
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

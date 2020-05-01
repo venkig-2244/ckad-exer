@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: nginx
+  name: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  strategy: 
+    type:
+     rollingupdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
+        ports:
+        - containerPort: 80 
+        volumeMounts:
+	- name: cache-volume
+          mountPath: /tmp 
+     - image: busybox
+        name: busybox
+        resources: {}
+        ports:
+	- containerPort: 8080
+        volumeMounts:
+	- name: cache-volume
+          mountPath: /tmp 
+      volumes:
+      - name: cache-volume
+        emptyDir: {}
