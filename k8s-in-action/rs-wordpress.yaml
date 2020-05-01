@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+    name: wordpress-rs
+    labels:
+        app: wordpress
+        type: frontend
+    annotations:
+        author: itsvenkatesh@gmail.com
+spec:
+    template:
+        metadata:
+            name: wordpress
+            labels: 
+                app: wordpress
+                type: frontend
+        spec:
+            containers:
+            - image: wordpress:4.8-apache
+              name: wordpress
+              ports:
+              - containerPort: 8080
+                name: wordpress
+                protocol: TCP
+    replicas: 5
+    selector:
+        matchLabels:
+            app: wordpress
+            type: frontend
+

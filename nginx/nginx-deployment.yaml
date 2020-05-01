@@ -1,25 +1,22 @@
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: nginx-deployment
-  namespace: ckad
-  labels:
-    app: nginx-deployment
+  name: nginx
 spec:
   replicas: 5
   selector:
     matchLabels:
-      app: nginx
+      app: webserver
   strategy:
     type: Recreate
   template:
     metadata:
-      name: nginx-pod
+      name: nginx
       labels:
-        app: nginx
+        app: webserver
     spec:
       containers:
       - image: nginx
-        name: nginx-container
+        name: nginx
 
 

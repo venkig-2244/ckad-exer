@@ -1,0 +1,49 @@
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+  creationTimestamp: "2020-04-02T10:11:33Z"
+  generation: 2
+  labels:
+    app: wordpress
+    type: frontend
+  name: wordpress-rc
+  namespace: default
+  resourceVersion: "10039420"
+  selfLink: /apis/extensions/v1beta1/namespaces/default/replicasets/wordpress-rc
+  uid: 544310d4-74ca-11ea-9bd3-42010aa00013
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: wordpress
+      type: frontend
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: wordpress
+        type: frontend
+      name: wordpress
+    spec:
+      containers:
+      - image: wordpress:4.8-apache
+        imagePullPolicy: IfNotPresent
+        name: wordpress
+        ports:
+        - containerPort: 8080
+          name: wordpress
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 9
+  fullyLabeledReplicas: 10
+  observedGeneration: 2
+  readyReplicas: 9
+  replicas: 10
